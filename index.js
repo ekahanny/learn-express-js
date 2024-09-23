@@ -20,12 +20,22 @@ app.post("/cats", (req, res) => {
   res.send("this is cats page from post");
 });
 
-// route dengan parameter
+// routing dengan parameter
 app.get("/blog/:kategori/:author/:judul", (req, res) => {
   const { kategori, author, judul } = req.params;
   res.send(
     `Kita sedang melihat postingan dengan kategori: ${kategori} - author: ${author} - judul: ${judul}`
   );
+});
+
+// menampilkan data dgn query string
+app.get("/search", (req, res) => {
+  //   console.log(req.query);
+  const { q } = req.query;
+  if (!q) {
+    res.send(`<h1>Tidak ada data yang dicari!</h1>`);
+  }
+  res.send(`<h1>Search keywords: ${q}</h1>`);
 });
 
 // menjalankan server
