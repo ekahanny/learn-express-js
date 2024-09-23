@@ -20,6 +20,14 @@ app.post("/cats", (req, res) => {
   res.send("this is cats page from post");
 });
 
+// route dengan parameter
+app.get("/blog/:kategori/:author/:judul", (req, res) => {
+  const { kategori, author, judul } = req.params;
+  res.send(
+    `Kita sedang melihat postingan dengan kategori: ${kategori} - author: ${author} - judul: ${judul}`
+  );
+});
+
 // menjalankan server
 app.listen(8080, () => {
   console.log("server is running on http://localhost:8080");
